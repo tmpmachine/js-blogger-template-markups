@@ -1,0 +1,78 @@
+<!-- tags: # blog_widget -->
+<b:defaultmarkup type='Blog'>
+    <b:includable id='main'>
+
+        <template class='WidgetData' expr:id='data:widget.instanceId'>
+            <div>
+                <!-- navigation -->
+                <data key='newerPageUrl'>
+                    <data:newerPageUrl />
+                </data>
+                <data key='olderPageUrl'>
+                    <data:olderPageUrl />
+                </data>
+
+                <data key='posts[]'>
+                    <b:with value='data:posts' var='posts'>
+                        <b:loop values='data:posts' var='post'>
+                            <div>
+                                <data key='id'>
+                                    <data:post.id />
+                                </data>
+                                <data key='url'>
+                                    <data:post.url />
+                                </data>
+                                <data key='title'>
+                                    <data:post.title />
+                                </data>
+                                <data key='date'>
+                                    <data:post.date />
+                                </data>
+                                <data data-type='node' key='body'>
+                                    <data:post.body />
+                                </data>
+                                <data key='appRpcRelayPath'>
+                                    <data:post.appRpcRelayPath />
+                                </data>
+                                <data key='commentFormIframeSrc'>
+                                    <data:post.commentFormIframeSrc />
+                                </data>
+                                <data key='cmtfpIframe'>
+                                    <data:post.cmtfpIframe />
+                                </data>
+                                <data key='commentsUrl'>
+                                    <data:post.commentsUrl />
+                                </data>
+                                <data key='commentsUrlOnclick'>
+                                    <data:post.commentsUrlOnclick />
+                                </data>
+
+                                <data key='labels[]'>
+                                    <b:loop values='data:post.labels' var='label'>
+                                        <div>
+                                            <data key='url'>
+                                                <data:label.url />
+                                            </data>
+                                            <data key='name'>
+                                                <data:laabel.name />
+                                            </data>
+                                        </div>
+                                    </b:loop>
+                                </data>
+                            </div>
+                        </b:loop>
+                    </b:with>
+                </data>
+
+            </div>
+        </template>
+
+        <!-- post metadata -->
+        <b:loop values='data:posts' var='post'>
+            <b:if cond='data:view.isSingleItem'>
+                <b:include data='post' name='postMetadataJSON' />
+            </b:if>
+        </b:loop>
+
+    </b:includable>
+</b:defaultmarkup>

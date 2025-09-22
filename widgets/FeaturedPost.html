@@ -1,0 +1,48 @@
+<!-- tags: # featured_post_widget -->
+<b:defaultmarkup type='FeaturedPost'>
+    <b:includable id='main'>
+
+        <template class='WidgetData' expr:id='data:widget.instanceId'>
+            <div>
+                <data key='title'>
+                    <data:title />
+                </data>
+
+                <data key='posts[]'>
+                    <b:loop values='data:posts' var='post'>
+                        <div>
+                            <data key='url'>
+                                <data:post.url />
+                            </data>
+                            <data key='title'>
+                                <data:post.title />
+                            </data>
+                            <data key='date'>
+                                <data:post.date />
+                            </data>
+                            <data data-type='node' key='body'>
+                                <data:post.body />
+                            </data>
+
+                            <data key='labels[]'>
+                                <b:loop values='data:post.labels' var='label'>
+                                    <div>
+                                        <data key='url'>
+                                            <data:label.url />
+                                        </data>
+                                        <data key='name'>
+                                            <data:label.name />
+                                        </data>
+                                    </div>
+                                </b:loop>
+                            </data>
+                        </div>
+                    </b:loop>
+
+                </data>
+
+            </div>
+        </template>
+
+    </b:includable>
+</b:defaultmarkup>

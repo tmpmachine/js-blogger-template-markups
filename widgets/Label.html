@@ -1,0 +1,29 @@
+<!-- tags: # label_widget -->
+<b:defaultmarkup type='Label'>
+    <b:includable id='main'>
+
+        <template class='WidgetData' expr:id='data:widget.instanceId'>
+            <div>
+                <data key='title'>
+                    <data:title />
+                </data>
+                <data key='labels[]'>
+                    <b:loop values='data:labels' var='item'>
+                        <div>
+                            <data key='url'>
+                                <data:item.url />
+                            </data>
+                            <data key='name'>
+                                <data:item.name />
+                            </data>
+                            <data key='count'>
+                                <data:item.count />
+                            </data>
+                        </div>
+                    </b:loop>
+                </data>
+            </div>
+        </template>
+
+    </b:includable>
+</b:defaultmarkup>

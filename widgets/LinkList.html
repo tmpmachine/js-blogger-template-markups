@@ -1,0 +1,26 @@
+<!-- tags: # linklist_widget -->
+<b:defaultmarkup type='LinkList'>
+  <b:includable id='main'>
+
+    <template class='WidgetData' expr:id='data:widget.instanceId'>
+      <div>
+        <data key='title'>
+          <data:title />
+        </data>
+        <data key='links[]'>
+          <b:loop values='data:links' var='link'>
+            <div>
+              <data key='target'>
+                <data:link.target />
+              </data>
+              <data key='name'>
+                <data:link.name />
+              </data>
+            </div>
+          </b:loop>
+        </data>
+      </div>
+    </template>
+    
+  </b:includable>
+</b:defaultmarkup>
