@@ -203,15 +203,16 @@
       </b:if>
     </template>
 
+    <!-- section and widgets -->
+    <div style='height:1px;position:absolute;bottom:0;right:0;width:1px;padding:1px;overflow:hidden'>
+      <b:include name='section_main'/>
+      <b:include name='section_extra_gadgets'/>
+    </div>
+
     <!-- main scripts -->
     <div hidden='hidden'>
       <b:include name='section_builder_scripts' />
       <b:include name='section_after_scripts' />
-    </div>
-
-    <!-- section and widgets -->
-    <div style='height:1px;position:absolute;bottom:0;right:0;width:1px;padding:1px;overflow:hidden'>
-      <b:include name='section_extra_gadgets' />
     </div>
 
   </b:if>
