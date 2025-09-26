@@ -132,31 +132,31 @@
   <!-- tags: #data, #global data -->
   <template class='WidgetData' id='Global'>
     <div>
-      <data slot='blog.title'>
+      <data key='blog.title'>
         <data:blog.title />
       </data>
-      <data slot='view.description'>
+      <data key='view.description'>
         <data:view.description />
       </data>
-      <data slot='blog.homepageUrl'>
+      <data key='blog.homepageUrl'>
         <data:blog.homepageUrl />
       </data>
-      <data slot='blog.blogId'>
+      <data key='blog.blogId'>
         <data:blog.blogId />
       </data>
-      <data data-type='boolean' slot='isHomepage'>
+      <data type='boolean' key='view.isHomepage'>
         <data:view.isHomepage />
       </data>
-      <data data-type='boolean' slot='isMultipleItems'>
+      <data type='boolean' key='view.isMultipleItems'>
         <data:view.isMultipleItems />
       </data>
-      <data data-type='boolean' slot='isSingleItem'>
+      <data type='boolean' key='view.isSingleItem'>
         <data:view.isSingleItem />
       </data>
-      <data data-type='boolean' slot='isPost'>
+      <data type='boolean' key='view.isPost'>
         <data:view.isPost />
       </data>
-      <data data-type='boolean' slot='isPage'>
+      <data type='boolean' key='view.isPage'>
         <data:view.isPage />
       </data>
     </div>
@@ -253,7 +253,7 @@
       </b:includable>
       <b:includable id='section_post_page_template'>
         <b:section id='Single Item Template' showaddelement='no'>
-          <b:widget id='HTML14' locked='true' title='' type='HTML' visible='true'>
+          <b:widget id='HTML2' locked='true' title='' type='HTML' visible='true'>
             <b:includable id='main'>
               <b:include name='widget-title' />
               <div class='widget-content'>
@@ -265,13 +265,13 @@
       </b:includable>
       <b:includable id='section_main'>
         <b:section id='Post Settings' showaddelement='no'>
-          <b:widget id='Blog1' locked='true' type='Blog' visible='true'/>
+          <b:widget id='Blog1' locked='true' type='Blog' visible='true' />
         </b:section>
       </b:includable>
       <b:includable id='section_builder_scripts'>
 
         <b:section id='Page Builder Scripts' showaddelement='no'>
-          <b:widget id='HTML2' locked='true' title='Builder Script' type='HTML' visible='true'>
+          <b:widget id='HTML3' locked='true' title='Builder Script' type='HTML' visible='true'>
             <b:widget-settings>
               <b:widget-setting name='content' />
             </b:widget-settings>
@@ -282,7 +282,7 @@
               </div>
             </b:includable>
           </b:widget>
-          <b:widget id='HTML6' locked='true' title='Runner Script' type='HTML' visible='true'>
+          <b:widget id='HTML4' locked='true' title='Runner Script' type='HTML' visible='true'>
             <b:widget-settings>
               <b:widget-setting name='content' />
             </b:widget-settings>
@@ -303,6 +303,86 @@
 
   <!-- # markups -->
   <b:defaultmarkups>
+
+    <!-- tags: # blog_widget -->
+    <b:defaultmarkup type='Blog'>
+      <b:includable id='main'>
+
+        <template class='WidgetData' expr:id='data:widget.instanceId'>
+          <div>
+            <!-- navigation -->
+            <data key='newerPageUrl'>
+              <data:newerPageUrl />
+            </data>
+            <data key='olderPageUrl'>
+              <data:olderPageUrl />
+            </data>
+
+            <data key='posts[]'>
+              <b:with value='data:posts' var='posts'>
+                <b:loop values='data:posts' var='post'>
+                  <div>
+                    <data key='id'>
+                      <data:post.id />
+                    </data>
+                    <data key='url'>
+                      <data:post.url />
+                    </data>
+                    <data key='title'>
+                      <data:post.title />
+                    </data>
+                    <data key='date'>
+                      <data:post.date />
+                    </data>
+                    <data data-type='node' key='body'>
+                      <data:post.body />
+                    </data>
+                    <data key='appRpcRelayPath'>
+                      <data:post.appRpcRelayPath />
+                    </data>
+                    <data key='commentFormIframeSrc'>
+                      <data:post.commentFormIframeSrc />
+                    </data>
+                    <data key='cmtfpIframe'>
+                      <data:post.cmtfpIframe />
+                    </data>
+                    <data key='commentsUrl'>
+                      <data:post.commentsUrl />
+                    </data>
+                    <data key='commentsUrlOnclick'>
+                      <data:post.commentsUrlOnclick />
+                    </data>
+
+                    <data key='labels[]'>
+                      <b:loop values='data:post.labels' var='label'>
+                        <div>
+                          <data key='url'>
+                            <data:label.url />
+                          </data>
+                          <data key='name'>
+                            <data:laabel.name />
+                          </data>
+                        </div>
+                      </b:loop>
+                    </data>
+                  </div>
+                </b:loop>
+              </b:with>
+            </data>
+
+          </div>
+        </template>
+
+        <!-- post metadata -->
+        <b:loop values='data:posts' var='post'>
+          <b:if cond='data:view.isSingleItem'>
+            <b:include data='post' name='postMetadataJSON' />
+          </b:if>
+        </b:loop>
+
+      </b:includable>
+    </b:defaultmarkup>
+
   </b:defaultmarkups>
 
 
