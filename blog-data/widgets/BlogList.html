@@ -1,0 +1,59 @@
+<!-- tags: # bloglist_widget -->
+<b:defaultmarkup type='BlogList'>
+  <b:includable id='main'>
+
+    <template class='WidgetData' expr:id='data:widget.instanceId'>
+      <div>
+        <data key='title'>
+          <data:title />
+        </data>
+        <data type='boolean' key='showIcon'>
+          <data:showIcon />
+        </data>
+        <data type='boolean' key='showItemThumbnail'>
+          <data:showItemThumbnail />
+        </data>
+        <data type='boolean' key='showItemTitle'>
+          <data:showItemTitle />
+        </data>
+        <data type='boolean' key='showItemSnippet'>
+          <data:showItemSnippet />
+        </data>
+        <data type='boolean' key='showTimePeriodSinceLastUpdate'>
+          <data:showTimePeriodSinceLastUpdate />
+        </data>
+        <data key='items[]'>
+          <b:loop values='data:items' var='item'>
+            <div>
+              <data key='blogIconUrl'>
+                <data:item.blogIconUrl />
+              </data>
+              <data key='blogTitle'>
+                <data:item.blogTitle />
+              </data>
+              <data key='blogUrl'>
+                <data:item.blogUrl />
+              </data>
+              <data key='itemThumbnail.url'>
+                <data:item.itemThumbnail.url />
+              </data>
+              <data key='itemUrl'>
+                <data:item.itemUrl />
+              </data>
+              <data key='itemTitle'>
+                <data:item.itemTitle />
+              </data>
+              <data key='itemSnippet'>
+                <data:item.itemSnippet />
+              </data>
+              <data key='timePeriodSinceLastUpdate'>
+                <data:item.timePeriodSinceLastUpdate />
+              </data>
+            </div>
+          </b:loop>
+        </data>
+      </div>
+    </template>
+    
+  </b:includable>
+</b:defaultmarkup>
